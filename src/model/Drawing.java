@@ -9,5 +9,6 @@ public interface Drawing {
 
     void draw();
 
+    void setup();
 
 }

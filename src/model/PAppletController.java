@@ -2,7 +2,7 @@ package model;
 
 import processing.core.PApplet;
 
-public class PAppletController extends PApplet{
+public class PAppletController extends PApplet {
 
     public PApplet pApplet;
 
@@ -11,6 +11,13 @@ public class PAppletController extends PApplet{
         width = pApplet.width;
         height = pApplet.height;
     }
+    // =================================================================================================================
+    // controls
+    // =================================================================================================================
+
+    public char key() {
+        return pApplet.key;
+    }
 
     // =================================================================================================================
     // setup
@@ -18,6 +25,10 @@ public class PAppletController extends PApplet{
 
     public void colorMode(int m) {
         pApplet.colorMode(m);
+    }
+
+    public void rectMode(int m) {
+        pApplet.rectMode(m);
     }
 
     public void background(int c) {
@@ -32,6 +43,10 @@ public class PAppletController extends PApplet{
         pApplet.fill(c);
     }
 
+    public void noFill() {
+        pApplet.noFill();
+    }
+
     public void stroke(int c) {
         pApplet.stroke(c);
     }
@@ -41,7 +56,7 @@ public class PAppletController extends PApplet{
     }
 
 
-    public void strokeWeight(int w) {
+    public void strokeWeight(float w) {
         pApplet.strokeWeight(w);
     }
 

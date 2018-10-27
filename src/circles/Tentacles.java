@@ -6,29 +6,26 @@ import processing.core.PApplet;
 
 public class Tentacles extends PAppletController implements Drawing {
 
-    public Tentacles(PApplet pApplet) {
-        super(pApplet);
-
-//        colorMode(RGB);
-    }
-
     public void keyPressed() {
-
     }
 
     public void mouseMoved() {
 
     }
 
-    public void draw1() {
-        background(0);
-        ellipse(mouseX, mouseY, 20, 20);
+    public void setup() {
+        rectMode(CORNER);
+//        colorMode(RGB);
 
     }
 
-    public int numArms = 15;
+    public Tentacles(PApplet pApplet) {
+        super(pApplet);
+    }
+
+    public int numArms = 5;
     public int numLayers = 10;
-    public int layerStep = 25;
+    public int layerStep = 15;
     public float circleRad = 50;
 
     public int rectWidth = 100;
@@ -44,7 +41,7 @@ public class Tentacles extends PAppletController implements Drawing {
         strokeWeight(5);
 
         drawArm(0, 0);
-        drawScrunchyArm(0, 0);
+//        drawScrunchyArm(0, 0);
         ellipse(0, 0, circleRad, circleRad);
 
         t++;
