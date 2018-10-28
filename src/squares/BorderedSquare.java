@@ -1,3 +1,5 @@
+package squares;
+
 import model.Drawing;
 import model.PAppletController;
 import processing.core.PApplet;

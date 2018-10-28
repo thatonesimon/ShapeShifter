@@ -1,6 +1,8 @@
 import circles.Tentacles;
 import model.Drawing;
+import polygons.RotatingShapes;
 import processing.core.PApplet;
+import squares.BorderedSquare;
 
 import java.util.ArrayList;
 
@@ -12,16 +14,23 @@ public class MainController extends PApplet {
 
     public void settings() {
 //        size(800, 800);
-        fullScreen(OPEN);
+        fullScreen(JAVA2D);
     }
 
     public void draw() {
-        drawings.get(curDrawing%drawings.size()).draw();
+        try {
+            drawings.get(curDrawing%drawings.size()).draw();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            exit();
+        }
     }
 
     public void setup() {
         drawings.add(new Tentacles(this));
         drawings.add(new BorderedSquare(this));
+        drawings.add(new RotatingShapes(this));
 
         drawings.get(0).setup();
     }

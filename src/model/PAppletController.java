@@ -19,6 +19,10 @@ public class PAppletController extends PApplet {
         return pApplet.key;
     }
 
+    public int keyCode() {
+        return pApplet.keyCode;
+    }
+
     // =================================================================================================================
     // setup
     // =================================================================================================================
@@ -51,6 +55,10 @@ public class PAppletController extends PApplet {
         pApplet.stroke(c);
     }
 
+    public void noStroke() {
+        pApplet.noStroke();
+    }
+
     public void stroke(int r, int g, int b) {
         pApplet.stroke(r, g, b);
     }
@@ -74,6 +82,18 @@ public class PAppletController extends PApplet {
 
     public void rect(float x, float y, float w, float h) {
         pApplet.rect(x, y, w, h);
+    }
+
+    public void beginShape() {
+        pApplet.beginShape();
+    }
+
+    public void endShape(int m) {
+        pApplet.endShape(m);
+    }
+
+    public void vertex(float x, float y) {
+        pApplet.vertex(x, y);
     }
 
     // =================================================================================================================

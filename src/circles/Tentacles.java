@@ -16,14 +16,13 @@ public class Tentacles extends PAppletController implements Drawing {
     public void setup() {
         rectMode(CORNER);
 //        colorMode(RGB);
-
     }
 
     public Tentacles(PApplet pApplet) {
         super(pApplet);
     }
 
-    public int numArms = 5;
+    public int numArms = 10;
     public int numLayers = 10;
     public int layerStep = 15;
     public float circleRad = 50;
