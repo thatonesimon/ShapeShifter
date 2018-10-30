@@ -35,6 +35,10 @@ public class PAppletController extends PApplet {
         pApplet.rectMode(m);
     }
 
+    public void ellipseMode(int m) {
+        pApplet.ellipseMode(m);
+    }
+
     public void background(int c) {
         pApplet.background(c);
     }
@@ -45,6 +49,9 @@ public class PAppletController extends PApplet {
 
     public void fill(int c) {
         pApplet.fill(c);
+    }
+    public void fill(int c, int a) {
+        pApplet.fill(c, a);
     }
 
     public void noFill() {
@@ -62,7 +69,6 @@ public class PAppletController extends PApplet {
     public void stroke(int r, int g, int b) {
         pApplet.stroke(r, g, b);
     }
-
 
     public void strokeWeight(float w) {
         pApplet.strokeWeight(w);

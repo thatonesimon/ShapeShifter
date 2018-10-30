@@ -1,3 +1,4 @@
+import circles.FloweringCircles;
 import circles.Tentacles;
 import model.Drawing;
 import polygons.RotatingShapes;
@@ -28,9 +29,10 @@ public class MainController extends PApplet {
     }
 
     public void setup() {
-        drawings.add(new Tentacles(this));
-        drawings.add(new BorderedSquare(this));
-        drawings.add(new RotatingShapes(this));
+        drawings.add(new FloweringCircles(this));
+        // drawings.add(new Tentacles(this));
+        // drawings.add(new BorderedSquare(this));
+        // drawings.add(new RotatingShapes(this));
 
         drawings.get(0).setup();
     }
