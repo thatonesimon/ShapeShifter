@@ -1,5 +1,6 @@
 package polygons;
 
+import color.Colors;
 import model.Drawing;
 import model.PAppletController;
 import processing.core.PApplet;
@@ -36,8 +37,8 @@ public class RotatingShapes extends PAppletController implements Drawing {
     public RotatingShapes(PApplet pApplet) {
         super(pApplet);
 
-        colors[0] = color(0);
-        colors[1] = color(255, 0, 0);
+        colors[0] = Colors.BLACK;
+        colors[1] = Colors.RED;
     }
 
     public void draw() {

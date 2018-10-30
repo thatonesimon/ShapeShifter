@@ -6,6 +6,10 @@ import processing.core.PApplet;
 
 public class Tentacles extends PAppletController implements Drawing {
 
+    public Tentacles(PApplet pApplet) {
+        super(pApplet);
+    }
+
     public void keyPressed() {
     }
 
@@ -16,10 +20,6 @@ public class Tentacles extends PAppletController implements Drawing {
     public void setup() {
         rectMode(CORNER);
 //        colorMode(RGB);
-    }
-
-    public Tentacles(PApplet pApplet) {
-        super(pApplet);
     }
 
     public int numArms = 10;

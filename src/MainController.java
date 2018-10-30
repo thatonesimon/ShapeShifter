@@ -13,8 +13,8 @@ public class MainController extends PApplet {
     ArrayList<Drawing> drawings = new ArrayList<>();
 
     public void settings() {
-       // size(800, 800);
-        fullScreen(JAVA2D);
+       size(400, 400);
+       // fullScreen(JAVA2D);
     }
 
     public void draw() {
