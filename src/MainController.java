@@ -1,5 +1,6 @@
 import circles.FloweringCircles;
 import circles.Tentacles;
+import grid.BaseGrid;
 import model.Drawing;
 import polygons.RotatingShapes;
 import processing.core.PApplet;
@@ -14,7 +15,7 @@ public class MainController extends PApplet {
     ArrayList<Drawing> drawings = new ArrayList<>();
 
     public void settings() {
-       size(400, 400);
+       size(800, 800);
        // fullScreen(JAVA2D);
     }
 
@@ -29,7 +30,9 @@ public class MainController extends PApplet {
     }
 
     public void setup() {
-        drawings.add(new FloweringCircles(this));
+        drawings.add(new BaseGrid(this));
+        noLoop();
+        // drawings.add(new FloweringCircles(this));
         // drawings.add(new Tentacles(this));
         // drawings.add(new BorderedSquare(this));
         // drawings.add(new RotatingShapes(this));
