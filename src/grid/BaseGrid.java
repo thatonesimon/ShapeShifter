@@ -19,6 +19,12 @@ public class BaseGrid extends PAppletController implements Drawing {
                 points[i][j] = new PVector(x, y);
             }
         }
+
+        // for(int i = 0; i < numX; i++) {
+        //     for (int j = 0; j < numY; j++) {
+        //         println(points[i][j].toString());
+        //     }
+        // }
     }
 
     public void setup() {
@@ -27,16 +33,33 @@ public class BaseGrid extends PAppletController implements Drawing {
 
     // number of points going in whatever direction
     // if numX == numY == 3, we'll end up with 2x2 boxes
-    int numX = 3;
-    int numY = 3;
+    int numX = 10;
+    int numY = 10;
 
     PVector[][] points;
 
     public void draw() {
-        for(int i = 0; i < numX; i++) {
-            for (int j = 0; j < numY; j++) {
-                println(points[i][j].toString());
+
+        background(0);
+
+        for(int i = 0; i < (numX-1)*(numY-1); i++) {
+            if(i%2 == 0) {
+                fill(0);
+            } else {
+                fill(255);
             }
+
+            // index of top left corner
+            int x = i/(numY-1);
+            int y = i%(numX-1);
+
+            beginShape();
+            vertex(points[x][y].x, points[x][y].y);
+            vertex(points[x][y+1].x, points[x][y+1].y);
+            vertex(points[x+1][y+1].x, points[x+1][y+1].y);
+            vertex(points[x+1][y].x, points[x+1][y].y);
+
+            endShape(CLOSE);
         }
     }
 }

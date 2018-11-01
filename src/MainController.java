@@ -31,13 +31,14 @@ public class MainController extends PApplet {
 
     public void setup() {
         drawings.add(new BaseGrid(this));
-        noLoop();
         // drawings.add(new FloweringCircles(this));
         // drawings.add(new Tentacles(this));
         // drawings.add(new BorderedSquare(this));
         // drawings.add(new RotatingShapes(this));
 
         drawings.get(0).setup();
+
+        // noLoop();
     }
 
     public void keyPressed() {

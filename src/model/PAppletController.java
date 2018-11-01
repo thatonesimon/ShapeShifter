@@ -93,7 +93,13 @@ public class PAppletController extends PApplet {
     public void beginShape() {
         pApplet.beginShape();
     }
+    public void beginShape(int m) {
+        pApplet.beginShape(m);
+    }
 
+    public void endShape() {
+        pApplet.endShape();
+    }
     public void endShape(int m) {
         pApplet.endShape(m);
     }
