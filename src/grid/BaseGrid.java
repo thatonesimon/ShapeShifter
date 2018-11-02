@@ -1,5 +1,6 @@
 package grid;
 
+import color.Colors;
 import model.Drawing;
 import model.PAppletController;
 import processing.core.PApplet;
@@ -49,9 +50,9 @@ public class BaseGrid extends PAppletController implements Drawing {
 
         for(int i = 0; i < (numX-1)*(numY-1); i++) {
             if(i%2 == 0) {
-                fill(0);
+                fill(Colors.BLACK);
             } else {
-                fill(255);
+                fill(Colors.RED);
             }
 
             // index of top left corner
@@ -83,8 +84,8 @@ public class BaseGrid extends PAppletController implements Drawing {
         for(int i = 0; i < numX; i++) {
             for (int j = 0; j < numY; j++) {
                 PVector pVector = points[i][j];
-                pVector.x+=(noise(i, j, 0)-0.5);
-                pVector.y+=(noise(i, j, 1)-0.5);
+                pVector.x+=(noise(i*j, 0, millis())-0.5);
+                pVector.y+=(noise(i*j, 1, millis())-0.5);
             }
         }
     }

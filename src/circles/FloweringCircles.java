@@ -1,5 +1,7 @@
 package circles;
 
+import color.Colors;
+import controller.MainController;
 import drawer.Circle;
 import model.Drawing;
 import model.PAppletController;
@@ -12,6 +14,7 @@ public class FloweringCircles extends PAppletController implements Drawing {
 
     public FloweringCircles(PApplet pApplet) {
         super(pApplet);
+        this.colorMode(RGB);
 
     }
 
@@ -19,7 +22,10 @@ public class FloweringCircles extends PAppletController implements Drawing {
         fill(200, 100);
         noStroke();
         ellipseMode(CENTER);
+        colorMode(RGB);
     }
+
+    Colors colors = new Colors(pApplet);
 
     int numPetals = 10;
     float r = 100;
@@ -52,8 +58,9 @@ public class FloweringCircles extends PAppletController implements Drawing {
         }
         for(Circle c : circles) {
             c.draw();
+            c.color = colors.changeAlpha(c.color, -1);
         }
-        circles.removeIf(c -> c.radius > 25);
+        circles.removeIf(c -> pApplet.alpha(c.color) <= 0);
     }
 
     public void drawRotation() {

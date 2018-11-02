@@ -1,5 +1,8 @@
+package controller;
+
 import circles.FloweringCircles;
 import circles.Tentacles;
+import color.Colors;
 import grid.BaseGrid;
 import model.Drawing;
 import polygons.RotatingShapes;
@@ -13,6 +16,8 @@ public class MainController extends PApplet {
     int curDrawing = 0;
 
     ArrayList<Drawing> drawings = new ArrayList<>();
+
+    public Colors colors = new Colors(this);
 
     public void settings() {
        size(1000, 1000);
@@ -30,8 +35,8 @@ public class MainController extends PApplet {
     }
 
     public void setup() {
-        drawings.add(new BaseGrid(this));
-        // drawings.add(new FloweringCircles(this));
+        // drawings.add(new BaseGrid(this));
+        drawings.add(new FloweringCircles(this));
         // drawings.add(new Tentacles(this));
         // drawings.add(new BorderedSquare(this));
         // drawings.add(new RotatingShapes(this));
@@ -52,7 +57,7 @@ public class MainController extends PApplet {
     }
 
     public static void main(String... args){
-        PApplet.main("MainController");
+        PApplet.main("controller.MainController");
 
     }
 

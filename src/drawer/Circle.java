@@ -1,5 +1,6 @@
 package drawer;
 
+import color.Colors;
 import model.PAppletController;
 import processing.core.PApplet;
 
@@ -17,9 +18,10 @@ public class Circle extends PAppletController {
     public float radius = 10;
     public float dRadius = 0;
 
-    int color;
+    public int color = Colors.WHITE;
 
     public void draw() {
+        fill(color);
         ellipse(x, y, radius*2, radius*2);
         next();
     }

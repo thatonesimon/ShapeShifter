@@ -50,8 +50,20 @@ public class PAppletController extends PApplet {
     public void fill(int c) {
         pApplet.fill(c);
     }
+    public void fill(float c) {
+        pApplet.fill(c);
+    }
     public void fill(int c, int a) {
         pApplet.fill(c, a);
+    }
+    public void fill(float c, float a) {
+        pApplet.fill(c, a);
+    }
+    public void fill(int r, int g, int b) {
+        pApplet.fill(r, g, b);
+    }
+    public void fill(float r, float g, float b) {
+        pApplet.fill(r, g, b);
     }
 
     public void noFill() {
