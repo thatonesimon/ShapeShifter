@@ -1,13 +1,9 @@
 package controller;
 
-import circles.FloweringCircles;
-import circles.Tentacles;
-import color.Colors;
-import grid.BaseGrid;
+import grid.GravityGrid;
+import grid.VortexGrid;
 import model.Drawing;
-import polygons.RotatingShapes;
 import processing.core.PApplet;
-import squares.BorderedSquare;
 
 import java.util.ArrayList;
 
@@ -17,10 +13,8 @@ public class MainController extends PApplet {
 
     ArrayList<Drawing> drawings = new ArrayList<>();
 
-    public Colors colors = new Colors(this);
-
     public void settings() {
-       size(1000, 1000);
+       size(800, 800);
        // fullScreen(JAVA2D);
     }
 
@@ -35,8 +29,9 @@ public class MainController extends PApplet {
     }
 
     public void setup() {
-        // drawings.add(new BaseGrid(this));
-        drawings.add(new FloweringCircles(this));
+        drawings.add(new VortexGrid(this));
+        drawings.add(new GravityGrid(this));
+        // drawings.add(new FloweringCircles(this));
         // drawings.add(new Tentacles(this));
         // drawings.add(new BorderedSquare(this));
         // drawings.add(new RotatingShapes(this));
@@ -54,6 +49,11 @@ public class MainController extends PApplet {
         Drawing drawing = drawings.get(curDrawing%drawings.size());
         drawing.keyPressed();
 
+    }
+
+    public void mousePressed() {
+        Drawing drawing = drawings.get(curDrawing%drawings.size());
+        drawing.mousePressed();
     }
 
     public static void main(String... args){

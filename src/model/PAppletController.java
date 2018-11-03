@@ -23,6 +23,14 @@ public class PAppletController extends PApplet {
         return pApplet.keyCode;
     }
 
+    public int mouseX() {
+        return pApplet.mouseX;
+    }
+
+    public int mouseY() {
+        return pApplet.mouseY;
+    }
+
     // =================================================================================================================
     // setup
     // =================================================================================================================

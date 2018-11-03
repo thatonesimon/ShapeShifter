@@ -27,7 +27,7 @@ public class FloweringCircles extends PAppletController implements Drawing {
 
     Colors colors = new Colors(pApplet);
 
-    int numPetals = 10;
+    int numPetals = 100;
     float r = 100;
     float circleRad = 100;
 
@@ -48,7 +48,7 @@ public class FloweringCircles extends PAppletController implements Drawing {
 
     public void drawRandomBlossom() {
         for(float i = 0; i < 360; i+=360.0f/numPetals) {
-            if(random(100) > 90) {
+            if(random(100) > 99) {
                 Circle c = new Circle(pApplet);
                 c.dx = cos(radians(i));
                 c.dy = sin(radians(i));
