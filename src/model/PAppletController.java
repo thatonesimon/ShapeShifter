@@ -5,11 +5,14 @@ import processing.core.PApplet;
 public class PAppletController extends PApplet {
 
     public PApplet pApplet;
+    public static float rotateT = 0;
+    public float cross = 0;
 
     public PAppletController(PApplet pApplet) {
         this.pApplet = pApplet;
         width = pApplet.width;
         height = pApplet.height;
+        cross = (float) Math.sqrt(width*width+height*height);
     }
     // =================================================================================================================
     // controls

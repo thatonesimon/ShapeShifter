@@ -1,9 +1,14 @@
-package controller;
 
+import circles.FloweringCircles;
+import circles.Tentacles;
 import grid.GravityGrid;
 import grid.VortexGrid;
+import kaleidoscope.KaleidoscopeGenerator;
 import model.Drawing;
+import model.PAppletController;
+import polygons.RotatingShapes;
 import processing.core.PApplet;
+import squares.BorderedSquare;
 
 import java.util.ArrayList;
 
@@ -14,11 +19,12 @@ public class MainController extends PApplet {
     ArrayList<Drawing> drawings = new ArrayList<>();
 
     public void settings() {
-       size(800, 800);
-       // fullScreen(JAVA2D);
+       // size(800, 800);
+       fullScreen(JAVA2D);
     }
 
     public void draw() {
+        PAppletController.rotateT = radians(millis()/30.0f);
         try {
             drawings.get(curDrawing%drawings.size()).draw();
 
@@ -29,12 +35,13 @@ public class MainController extends PApplet {
     }
 
     public void setup() {
+        drawings.add(new KaleidoscopeGenerator(this));
         drawings.add(new VortexGrid(this));
         drawings.add(new GravityGrid(this));
-        // drawings.add(new FloweringCircles(this));
-        // drawings.add(new Tentacles(this));
-        // drawings.add(new BorderedSquare(this));
-        // drawings.add(new RotatingShapes(this));
+        drawings.add(new FloweringCircles(this));
+        drawings.add(new Tentacles(this));
+        drawings.add(new BorderedSquare(this));
+        drawings.add(new RotatingShapes(this));
 
         drawings.get(0).setup();
 
@@ -57,7 +64,7 @@ public class MainController extends PApplet {
     }
 
     public static void main(String... args){
-        PApplet.main("controller.MainController");
+        PApplet.main("MainController");
 
     }
 

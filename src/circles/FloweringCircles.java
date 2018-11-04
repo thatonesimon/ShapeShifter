@@ -1,14 +1,12 @@
 package circles;
 
 import color.Colors;
-import controller.MainController;
 import drawer.Circle;
 import model.Drawing;
 import model.PAppletController;
 import processing.core.PApplet;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class FloweringCircles extends PAppletController implements Drawing {
 
