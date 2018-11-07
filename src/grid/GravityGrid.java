@@ -5,7 +5,7 @@ import processing.core.PVector;
 
 import java.util.ArrayList;
 
-public class GravityGrid extends BaseGrid {
+public class GravityGrid extends SquareGrid {
 
     public GravityGrid(PApplet pApplet) {
         super(pApplet);

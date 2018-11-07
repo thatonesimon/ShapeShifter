@@ -2,12 +2,14 @@
 import circles.FloweringCircles;
 import circles.Targets;
 import circles.Tentacles;
+import curves.BezierDemo;
 import grid.GravityGrid;
 import grid.VortexGrid;
 import kaleidoscope.KaleidoscopeGenerator;
 import model.Drawing;
 import model.PAppletController;
 import polygons.RotatingShapes;
+import polygons.StarOfDavid;
 import processing.core.PApplet;
 import squares.BorderedSquare;
 
@@ -36,7 +38,9 @@ public class MainController extends PApplet {
     }
 
     public void setup() {
-        drawings.add(new Targets(this));
+        drawings.add(new BezierDemo(this));
+        // drawings.add(new StarOfDavid(this));
+        // drawings.add(new Targets(this));
         // drawings.add(new KaleidoscopeGenerator(this));
         // drawings.add(new VortexGrid(this));
         // drawings.add(new GravityGrid(this));

@@ -6,9 +6,9 @@ import model.PAppletController;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class BaseGrid extends PAppletController implements Drawing {
+public class SquareGrid extends PAppletController implements Drawing {
 
-    public BaseGrid(PApplet pApplet) {
+    public SquareGrid(PApplet pApplet) {
         super(pApplet);
         points = new PVector[numX][numY];
 
