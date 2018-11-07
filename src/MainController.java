@@ -1,5 +1,6 @@
 
 import circles.FloweringCircles;
+import circles.Targets;
 import circles.Tentacles;
 import grid.GravityGrid;
 import grid.VortexGrid;
@@ -19,8 +20,8 @@ public class MainController extends PApplet {
     ArrayList<Drawing> drawings = new ArrayList<>();
 
     public void settings() {
-       // size(800, 800);
-       fullScreen(JAVA2D);
+       size(800, 800);
+       // fullScreen(JAVA2D);
     }
 
     public void draw() {
@@ -35,13 +36,14 @@ public class MainController extends PApplet {
     }
 
     public void setup() {
-        drawings.add(new KaleidoscopeGenerator(this));
-        drawings.add(new VortexGrid(this));
-        drawings.add(new GravityGrid(this));
-        drawings.add(new FloweringCircles(this));
-        drawings.add(new Tentacles(this));
-        drawings.add(new BorderedSquare(this));
-        drawings.add(new RotatingShapes(this));
+        drawings.add(new Targets(this));
+        // drawings.add(new KaleidoscopeGenerator(this));
+        // drawings.add(new VortexGrid(this));
+        // drawings.add(new GravityGrid(this));
+        // drawings.add(new FloweringCircles(this));
+        // drawings.add(new Tentacles(this));
+        // drawings.add(new BorderedSquare(this));
+        // drawings.add(new RotatingShapes(this));
 
         drawings.get(0).setup();
 
