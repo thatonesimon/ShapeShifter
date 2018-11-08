@@ -1,12 +1,10 @@
 package grid;
 
 import color.Colors;
-import model.Drawing;
-import model.PAppletController;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class TriangleGrid extends PAppletController implements Drawing {
+public class TriangleGrid extends BaseGrid {
 
     public TriangleGrid(PApplet pApplet) {
         super(pApplet);
@@ -29,7 +27,7 @@ public class TriangleGrid extends PAppletController implements Drawing {
     float triSide;
     float triHeight;
 
-     PVector[][] points;
+    PVector[][] points;
 
 
     public void draw() {

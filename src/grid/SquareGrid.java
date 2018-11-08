@@ -1,30 +1,17 @@
 package grid;
 
 import color.Colors;
-import model.Drawing;
-import model.PAppletController;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class SquareGrid extends PAppletController implements Drawing {
+public class SquareGrid extends BaseGrid {
 
     public SquareGrid(PApplet pApplet) {
         super(pApplet);
         points = new PVector[numX][numY];
 
         setupPoints();
-
-        // for(int i = 0; i < numX; i++) {
-        //     for (int j = 0; j < numY; j++) {
-        //         println(points[i][j].toString());
-        //     }
-        // }
-    }
-
-    public void keyPressed() {
-        if(key() == ' ') {
-            setupPoints();
-        }
+        squareSide = max((float) width/(numX-1), (float) height/(numY-1));
     }
 
     public void setup() {
@@ -40,6 +27,7 @@ public class SquareGrid extends PAppletController implements Drawing {
     // .   .   .
     int numX = 30;
     int numY = 30;
+    float squareSide;
 
     PVector[][] points;
 
@@ -72,21 +60,12 @@ public class SquareGrid extends PAppletController implements Drawing {
     public void setupPoints() {
         for(int i = 0; i < numX; i++) {
             for(int j = 0; j < numY; j++) {
-                float x = i*((float) width)/(numX-1);
-                float y = j*((float) height)/(numY-1);
+                // float x = i*((float) width)/(numX-1);
+                // float y = j*((float) height)/(numY-1);
+                float x = i*squareSide;
+                float y = j*squareSide;
                 points[i][j] = new PVector(x, y);
             }
-        }
-    }
-
-    public void wobbleGrid() {
-        for(int i = 0; i < numX; i++) {
-            for (int j = 0; j < numY; j++) {
-                PVector pVector = points[i][j];
-                // pVector.x+=(noise(i*j, 0, millis())-0.5);
-                // pVector.y+=(noise(i*j, 1, millis())-0.5);
-                pVector.x+=(noise(i*numX+j, 0, millis())-0.5);
-                pVector.y+=(noise(i*numX+j, 1, millis())-0.5);}
         }
     }
 }

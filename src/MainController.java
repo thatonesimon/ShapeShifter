@@ -45,7 +45,7 @@ public class MainController extends PApplet {
         // drawings.add(new Targets(this));
         // drawings.add(new KaleidoscopeGenerator(this));
         // drawings.add(new VortexGrid(this));
-        // drawings.add(new GravityGrid(this));
+        drawings.add(new GravityGrid(this));
         // drawings.add(new FloweringCircles(this));
         // drawings.add(new Tentacles(this));
         // drawings.add(new BorderedSquare(this));

@@ -18,7 +18,6 @@ public class GravityGrid extends SquareGrid {
 
     public void mousePressed() {
         if(pApplet.mousePressed) {
-            println("mousepressed");
             gravity.add(new PVector(mouseX(), mouseY()));
         }
     }
