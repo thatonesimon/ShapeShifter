@@ -10,7 +10,7 @@ public class StarOfDavid extends PAppletController implements Drawing {
         super(pApplet);
 
         triHeight = (float) Math.sqrt((triSide*triSide)-((triSide/2.0f)*(triSide/2.0f)));
-        triWidth = (triPerLine+1)/2*triSide;
+        triStripWidth = (triPerLine+1)/2*triSide;
     }
 
     public void setup() {
@@ -23,7 +23,7 @@ public class StarOfDavid extends PAppletController implements Drawing {
     int triPerLine = 9;
     float triSide = 100;
     float triHeight;
-    float triWidth;
+    float triStripWidth;
 
 
     public void draw() {
@@ -41,7 +41,7 @@ public class StarOfDavid extends PAppletController implements Drawing {
         pushMatrix();
         beginShape(TRIANGLE_STRIP);
         float x = 0;
-        translate(-triWidth/2.0f, 0);
+        translate(-triStripWidth/2.0f, 0);
         for(int i = 0; i < (triPerLine+1)/2; i++) {
             vertex(x, 0);
             x+=triSide/2.0f;
