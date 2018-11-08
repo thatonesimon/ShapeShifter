@@ -1,23 +1,30 @@
 package grid;
 
+import model.Drawing;
+import model.PAppletController;
 import processing.core.PApplet;
 import processing.core.PVector;
 
 import java.util.ArrayList;
 
-public class GravityGrid extends SquareGrid {
+public class GravityGrid extends PAppletController implements Drawing {
 
-    public GravityGrid(PApplet pApplet) {
+    BaseGrid grid;
+
+    public GravityGrid(PApplet pApplet, BaseGrid grid) {
         super(pApplet);
+        this.grid = grid;
+        grid.setupPoints();
+        mockCenter();
     }
 
     public void setup() {
-        noStroke();
-        // mockCenter();
+        grid.setup();
     }
 
     public void mousePressed() {
         if(pApplet.mousePressed) {
+            println("mouse");
             gravity.add(new PVector(mouseX(), mouseY()));
         }
     }
@@ -25,8 +32,17 @@ public class GravityGrid extends SquareGrid {
     ArrayList<PVector> gravity = new ArrayList<>();
 
     public void draw() {
-        super.draw();
+        grid.draw();
         suck();
+
+        try {
+            // PVector p = grid.points[0][0];
+            // float x = p.x;
+            println(grid.points.length);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void mockCenter() {
@@ -42,16 +58,17 @@ public class GravityGrid extends SquareGrid {
             float y = fakePointsSpread*sin(radians(i)) + height/2.0f;
             gravity.add(new PVector(x, y));
         }
-
     }
 
     public void suck() {
         if(gravity == null) {
             return;
         } else {
-            for(int i = 0; i < numX; i++) {
-                for (int j = 0; j < numY; j++) {
-                    PVector point = points[i][j];
+            PVector[][] points = new PVector[grid.numX][grid.numY];
+            int times = 0;
+            for(int i = 0; i < grid.numX; i++) {
+                for (int j = 0; j < grid.numY; j++) {
+                    PVector point = grid.points[i][j];
 
                     for(PVector c : gravity) {
                         PVector click = new PVector(c.x, c.y);
@@ -66,15 +83,12 @@ public class GravityGrid extends SquareGrid {
                         move = move.div(dist * dist / 25.0f);
 
                         points[i][j] = point.add(move);
-
-
                         // point.x += (point.x - click.x) / dist*dist;
                         // point.y += (point.y - click.y) / dist/dist;
+                        times++;
                     }
                 }
             }
         }
-
     }
-
 }

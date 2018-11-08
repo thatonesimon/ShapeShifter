@@ -6,7 +6,7 @@ import processing.core.PVector;
 public class VortexGrid extends GravityGrid {
 
     public VortexGrid(PApplet pApplet) {
-        super(pApplet);
+        super(pApplet, new SquareGrid(pApplet));
         noEffectRad = 10.0f;
     }
 

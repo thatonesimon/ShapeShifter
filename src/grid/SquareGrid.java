@@ -8,14 +8,13 @@ public class SquareGrid extends BaseGrid {
 
     public SquareGrid(PApplet pApplet) {
         super(pApplet);
-        points = new PVector[numX][numY];
-
-        setupPoints();
         squareSide = max((float) width/(numX-1), (float) height/(numY-1));
+        setupPoints();
     }
 
     public void setup() {
         noStroke();
+
     }
 
     // number of points going in whatever direction
@@ -25,11 +24,7 @@ public class SquareGrid extends BaseGrid {
     // .   .   .
     //   x   x
     // .   .   .
-    int numX = 30;
-    int numY = 30;
-    float squareSide;
-
-    PVector[][] points;
+    public float squareSide;
 
     public void draw() {
 

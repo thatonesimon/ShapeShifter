@@ -9,6 +9,7 @@ public class TriangleGrid extends BaseGrid {
     public TriangleGrid(PApplet pApplet) {
         super(pApplet);
 
+        numY = 30;
         triSide = (float) height/numY;
         triHeight = (float) Math.sqrt((triSide*triSide)-((triSide/2.0f)*(triSide/2.0f)));
         numX = (int) (Math.floor(width/triHeight)+1);
@@ -21,25 +22,12 @@ public class TriangleGrid extends BaseGrid {
         setupPoints();
     }
 
-    int numX = 30;
     // y will alternate numY and numY+2
-    int numY = 30;
     float triSide;
     float triHeight;
 
-    PVector[][] points;
-
-
     public void draw() {
         background(0);
-        for(int i = 0; i < numX; i++) {
-            for(int j = 0; j < numY+1; j++) {
-                if(points[i][j] != null) {
-                    PVector p = points[i][j];
-                    // ellipse(p.x, p.y, 10, 10);
-                }
-            }
-        }
 
         for(int i = 0; i < numX-1; i++) {
             for(int j = 0; j < numY + 2; j++) {
@@ -92,11 +80,8 @@ public class TriangleGrid extends BaseGrid {
 
 
                 } catch (Exception e) {
-                    println("issue with " + i + ", " + j);
+                    // println("issue with " + i + ", " + j);
                 }
-
-
-
             }
         }
     }
