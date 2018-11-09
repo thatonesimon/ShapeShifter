@@ -33,26 +33,15 @@ public class GravityGrid extends PAppletController implements Drawing {
 
     public void draw() {
         grid.draw();
-        suck();
-
-        try {
-            // PVector p = grid.points[0][0];
-            // float x = p.x;
-            println(grid.points.length);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        suckRectangle();
     }
 
     public void mockCenter() {
         gravity.add(new PVector(width/2.0f, height/2.0f));
     }
 
-    int numFakePoints = 3;
     float fakePointsSpread = 150;
-    float noEffectRad = 100;
-    public void mockPoints() {
+    public void mockPoints(int numFakePoints) {
         for(float i = -90.0f; i < 360.0-90.0; i+=360.0f/numFakePoints) {
             float x = fakePointsSpread*cos(radians(i)) + width/2.0f;
             float y = fakePointsSpread*sin(radians(i)) + height/2.0f;
@@ -60,35 +49,53 @@ public class GravityGrid extends PAppletController implements Drawing {
         }
     }
 
-    public void suck() {
-        if(gravity == null) {
-            return;
-        } else {
-            PVector[][] points = new PVector[grid.numX][grid.numY];
-            int times = 0;
-            for(int i = 0; i < grid.numX; i++) {
+    float noEffectRad = 100;
+    public void suckCircle() {
+        for (PVector g : gravity) {
+            for (int i = 0; i < grid.numX; i++) {
                 for (int j = 0; j < grid.numY; j++) {
                     PVector point = grid.points[i][j];
+                    PVector grav = new PVector(g.x, g.y);
 
-                    for(PVector c : gravity) {
-                        PVector click = new PVector(c.x, c.y);
-
-                        // distance between point and last click
-                        float dist = point.dist(click);
-                        if (dist < noEffectRad) {
-                            continue;
-                        }
-
-                        PVector move = click.sub(point);
-                        move = move.div(dist * dist / 25.0f);
-
-                        points[i][j] = point.add(move);
-                        // point.x += (point.x - click.x) / dist*dist;
-                        // point.y += (point.y - click.y) / dist/dist;
-                        times++;
+                    // distance between point and grav
+                    float dist = point.dist(grav);
+                    if (dist < noEffectRad) {
+                        continue;
                     }
+
+                    PVector move = grav.sub(point);
+                    move = move.div(dist * dist / 25.0f);
+                    point.add(move);
                 }
             }
         }
+    }
+
+    float noEffectX = 100;
+    float noEffectY = 100;
+    public void suckRectangle() {
+        for (PVector c : gravity) {
+            for(int i = 0; i < grid.numX; i++) {
+                for (int j = 0; j < grid.numY; j++) {
+                    PVector point = grid.points[i][j];
+                    PVector grav = new PVector(c.x, c.y);
+
+                    // distance between point and grav
+                    float dist = point.dist(grav);
+                    if(insideSquare(grav, point)) {
+                        continue;
+                    }
+
+                    PVector move = grav.sub(point);
+                    move = move.div(dist * dist / 25.0f);
+                    point.add(move);
+                }
+            }
+        }
+    }
+
+    public boolean insideSquare(PVector center, PVector point) {
+        return  point.x < center.x+noEffectX && point.x > center.x-noEffectX &&
+                point.y < center.y+noEffectY && point.y > center.y-noEffectY;
     }
 }

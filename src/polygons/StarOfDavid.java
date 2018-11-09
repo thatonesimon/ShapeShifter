@@ -20,8 +20,8 @@ public class StarOfDavid extends PAppletController implements Drawing {
     }
 
     // should be odd to make a /1\2/3\4/5\
-    int triPerLine = 9;
-    float triSide = 100;
+    int triPerLine = 11;
+    float triSide = 50;
     float triHeight;
     float triStripWidth;
 
@@ -30,9 +30,13 @@ public class StarOfDavid extends PAppletController implements Drawing {
         background(0);
         pushMatrix();
         center();
-        for(int i = 0; i < 8; i ++) {
+        for(int i = 0; i < 6; i ++) {
+            pushMatrix();
+            rotate(radians(i*60));
+            translate(0, -triStripWidth/3.5f);
             drawArm();
-            rotate(radians(60));
+            popMatrix();
+
         }
         popMatrix();
     }

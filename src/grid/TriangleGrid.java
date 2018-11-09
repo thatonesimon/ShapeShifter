@@ -13,7 +13,6 @@ public class TriangleGrid extends BaseGrid {
         triSide = (float) height/numY;
         triHeight = (float) Math.sqrt((triSide*triSide)-((triSide/2.0f)*(triSide/2.0f)));
         numX = (int) (Math.floor(width/triHeight)+1);
-
         points = new PVector[numX][numY+2];
     }
 
@@ -28,7 +27,7 @@ public class TriangleGrid extends BaseGrid {
 
     public void draw() {
         background(0);
-
+        // wobbleGrid();
         for(int i = 0; i < numX-1; i++) {
             for(int j = 0; j < numY + 2; j++) {
 

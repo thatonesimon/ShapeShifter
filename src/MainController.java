@@ -40,10 +40,13 @@ public class MainController extends PApplet {
     }
 
     public void setup() {
-        drawings.add(new GravityGrid(this, new TriangleGrid(this)));
-        drawings.add(new TriangleGrid(this));
-        drawings.add(new BezierDemo(this));
         // drawings.add(new StarOfDavid(this));
+
+        drawings.add(new GravityGrid(this, new TriangleGrid(this)));
+        // drawings.add(new GravityGrid(this, new SquareGrid(this)));
+
+        drawings.add(new TriangleGrid(this));
+        // drawings.add(new BezierDemo(this));
         // drawings.add(new Targets(this));
         // drawings.add(new KaleidoscopeGenerator(this));
         // drawings.add(new VortexGrid(this));
