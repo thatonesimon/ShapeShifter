@@ -3,10 +3,7 @@ import circles.FloweringCircles;
 import circles.Targets;
 import circles.Tentacles;
 import curves.BezierDemo;
-import grid.GravityGrid;
-import grid.SquareGrid;
-import grid.TriangleGrid;
-import grid.VortexGrid;
+import grid.*;
 import kaleidoscope.KaleidoscopeGenerator;
 import model.Drawing;
 import model.PAppletController;
@@ -41,19 +38,19 @@ public class MainController extends PApplet {
 
     public void setup() {
         // drawings.add(new StarOfDavid(this));
-
-        drawings.add(new GravityGrid(this, new TriangleGrid(this)));
-        // drawings.add(new GravityGrid(this, new SquareGrid(this)));
-
+        drawings.add(new CircleGrid(this));
         drawings.add(new TriangleGrid(this));
+        drawings.add(new GravityGrid(this, new TriangleGrid(this)));
+        drawings.add(new GravityGrid(this, new SquareGrid(this)));
+
         // drawings.add(new BezierDemo(this));
-        // drawings.add(new Targets(this));
-        // drawings.add(new KaleidoscopeGenerator(this));
-        // drawings.add(new VortexGrid(this));
-        // drawings.add(new FloweringCircles(this));
-        // drawings.add(new Tentacles(this));
-        // drawings.add(new BorderedSquare(this));
-        // drawings.add(new RotatingShapes(this));
+        drawings.add(new Targets(this));
+        drawings.add(new KaleidoscopeGenerator(this));
+        drawings.add(new VortexGrid(this));
+        drawings.add(new FloweringCircles(this));
+        drawings.add(new Tentacles(this));
+        drawings.add(new BorderedSquare(this));
+        drawings.add(new RotatingShapes(this));
 
         drawings.get(0).setup();
 

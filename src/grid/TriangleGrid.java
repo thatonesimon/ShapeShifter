@@ -86,6 +86,7 @@ public class TriangleGrid extends BaseGrid {
     }
 
     // TODO: setup with i, j and not x, y
+    // TODO: how to make up and down triangles
     public void setupPoints() {
 
         int col = 0;

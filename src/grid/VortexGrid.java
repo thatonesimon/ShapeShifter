@@ -14,6 +14,7 @@ public class VortexGrid extends GravityGrid {
         gravity.add(new PVector(radius*cos(radians(millis()))+width/2.0f, radius*sin(radians(millis()))+height/2.0f));
         gravity.add(new PVector(2*radius*cos(radians(millis()))+width/2.0f, 2*radius*sin(radians(millis()))+height/2.0f));
 
+        noStroke();
     }
 
     int radius = 200;

@@ -36,12 +36,12 @@ public class GravityGrid extends PAppletController implements Drawing {
         suckRectangle();
     }
 
-    public void mockCenter() {
+    private void mockCenter() {
         gravity.add(new PVector(width/2.0f, height/2.0f));
     }
 
     float fakePointsSpread = 150;
-    public void mockPoints(int numFakePoints) {
+    private void mockPoints(int numFakePoints) {
         for(float i = -90.0f; i < 360.0-90.0; i+=360.0f/numFakePoints) {
             float x = fakePointsSpread*cos(radians(i)) + width/2.0f;
             float y = fakePointsSpread*sin(radians(i)) + height/2.0f;
@@ -50,7 +50,7 @@ public class GravityGrid extends PAppletController implements Drawing {
     }
 
     float noEffectRad = 100;
-    public void suckCircle() {
+    private void suckCircle() {
         for (PVector g : gravity) {
             for (int i = 0; i < grid.numX; i++) {
                 for (int j = 0; j < grid.numY; j++) {
@@ -73,7 +73,7 @@ public class GravityGrid extends PAppletController implements Drawing {
 
     float noEffectX = 100;
     float noEffectY = 100;
-    public void suckRectangle() {
+    private void suckRectangle() {
         for (PVector c : gravity) {
             for(int i = 0; i < grid.numX; i++) {
                 for (int j = 0; j < grid.numY; j++) {
@@ -94,7 +94,7 @@ public class GravityGrid extends PAppletController implements Drawing {
         }
     }
 
-    public boolean insideSquare(PVector center, PVector point) {
+    private boolean insideSquare(PVector center, PVector point) {
         return  point.x < center.x+noEffectX && point.x > center.x-noEffectX &&
                 point.y < center.y+noEffectY && point.y > center.y-noEffectY;
     }
