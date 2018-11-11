@@ -1,12 +1,13 @@
 package kaleidoscope.backgrounds;
 
+import model.Drawing;
 import model.PAppletController;
 import processing.core.PApplet;
 
-public class RotatingLines extends KBackground {
+public class RotatingLines extends PAppletController implements Drawing {
 
-    public RotatingLines(PApplet pApplet, int layerId) {
-        super(pApplet, layerId);
+    public RotatingLines(PApplet pApplet) {
+        super(pApplet);
     }
 
     public void setup() {

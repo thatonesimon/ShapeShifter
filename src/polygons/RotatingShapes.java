@@ -32,6 +32,8 @@ public class RotatingShapes extends PAppletController implements Drawing {
     }
 
     public void setup() {
+        background(0);
+        noStroke();
     }
 
     public RotatingShapes(PApplet pApplet) {
@@ -42,9 +44,8 @@ public class RotatingShapes extends PAppletController implements Drawing {
     }
 
     public void draw() {
-        translate(width/2, height/2);
-        background(0);
-        noStroke();
+        pushMatrix();
+        center();
         for(int i = numLayers-1; i >= 0; i--) {
             fill(colors[i%numColors]);
             rotate(radians(rotation));
@@ -53,6 +54,7 @@ public class RotatingShapes extends PAppletController implements Drawing {
 
         }
         rotation += 1.0/numLayers;
+        popMatrix();
     }
 
     public void drawShape(float size) {

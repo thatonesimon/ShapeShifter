@@ -8,11 +8,12 @@ public class VortexGrid extends GravityGrid {
     public VortexGrid(PApplet pApplet) {
         super(pApplet, new SquareGrid(pApplet));
         noEffectRad = 10.0f;
+        gravity.add(new PVector(radius*cos(radians(millis()))+width/2.0f, radius*sin(radians(millis()))+height/2.0f));
+        gravity.add(new PVector(2*radius*cos(radians(millis()))+width/2.0f, 2*radius*sin(radians(millis()))+height/2.0f));
     }
 
     public void setup() {
-        gravity.add(new PVector(radius*cos(radians(millis()))+width/2.0f, radius*sin(radians(millis()))+height/2.0f));
-        gravity.add(new PVector(2*radius*cos(radians(millis()))+width/2.0f, 2*radius*sin(radians(millis()))+height/2.0f));
+        noStroke();
 
         noStroke();
     }

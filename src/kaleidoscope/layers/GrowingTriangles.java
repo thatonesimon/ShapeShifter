@@ -1,5 +1,6 @@
 package kaleidoscope.layers;
 
+import color.Colors;
 import drawer.Polygon;
 import model.PAppletController;
 import processing.core.PApplet;
@@ -13,8 +14,8 @@ public class GrowingTriangles extends KLayer {
     public void setup() {
         // noStroke();
         // fill(255);
-        stroke(255);
-        noFill();
+        stroke(0);
+        fill(Colors.RED);
     }
 
     public boolean isMirrored = true;

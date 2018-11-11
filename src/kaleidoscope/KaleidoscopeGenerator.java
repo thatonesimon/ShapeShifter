@@ -1,10 +1,12 @@
 package kaleidoscope;
 
+import circles.FloweringCircles;
 import kaleidoscope.backgrounds.*;
 import kaleidoscope.layers.GrowingTriangles;
 import kaleidoscope.layers.KLayer;
 import model.Drawing;
 import model.PAppletController;
+import polygons.RotatingShapes;
 import processing.core.PApplet;
 
 import java.util.ArrayList;
@@ -16,30 +18,31 @@ public class KaleidoscopeGenerator extends PAppletController implements Drawing 
     }
 
     ArrayList<KLayer> layers = new ArrayList<>();
-    ArrayList<KBackground> backgrounds = new ArrayList<>();
+    ArrayList<Drawing> backgrounds = new ArrayList<>();
     int numLayers = 5;
     int numPanels = 6;
     float layerSize = 100;
 
     public void setup() {
         layers.clear();
+        backgrounds.clear();
         for(int i = 0; i < numLayers; i++) {
             KLayer l = generateLayer(pApplet, numPanels, (i)*layerSize, i);
             l.numPanels+=i;
             layers.add(l);
         }
-        backgrounds.add(new GrowingStar(pApplet, 0));
-        backgrounds.add(new RotatingLines(pApplet, 0));
+        backgrounds.add(new RotatingShapes(pApplet));
+        backgrounds.add(new GrowingStar(pApplet));
+
     }
 
     public void draw() {
-        center();
         background(0);
-        for(KBackground b : backgrounds) {
+        for(Drawing b : backgrounds) {
             b.setup();
             b.draw();
         }
-
+        center();
         int curLayer = 0;
         for(KLayer l : layers) {
             pushMatrix();
@@ -62,7 +65,7 @@ public class KaleidoscopeGenerator extends PAppletController implements Drawing 
     public KLayer generateLayer(PApplet pApplet, int numPanels, float distCenter, int layerId) {
         float mode = random(1);
         if(mode < 1) {
-            return new GrowingTriangles(pApplet, numPanels, distCenter, layerId);
+            return new KLayer(pApplet, numPanels, distCenter, layerId);
         } else {
             return new KLayer(pApplet, numPanels, distCenter, layerId);
         }
