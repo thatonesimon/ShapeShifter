@@ -27,13 +27,17 @@ public class BaseStripes extends PAppletController implements Drawing {
     public PVector[][] points = new PVector[numPoints][numPoints];
     public float pointSpace;
     public int[] colors;
+    public boolean horizontal = true;
 
     public void draw() {
         pushMatrix();
         background(Colors.BLACK);
 
-        drawHorizontal();
-        // drawVertical();
+        if(horizontal) {
+            drawHorizontal();
+        } else {
+            drawVertical();
+        }
 
         popMatrix();
     }

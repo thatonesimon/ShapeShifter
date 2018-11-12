@@ -41,8 +41,8 @@ public class MainController extends PApplet {
     public void setup() {
 
         // current work
-        drawings.add(new WobbleStripes(this));
-
+        // drawings.add(new WobbleStripes(this));
+        drawings.add(new GridOfSquares(this));
 
         // circles
         drawings.add(new FloweringCircles(this));

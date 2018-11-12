@@ -78,7 +78,6 @@ public class FloweringCircles extends PAppletController implements Drawing {
             c.color = colors.changeAlpha(c.color, -1);
         }
         circles.removeIf(c -> c.shouldRemove);
-        println(circles.size());
 
         c++;
     }
