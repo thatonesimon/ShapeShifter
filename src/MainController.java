@@ -11,6 +11,8 @@ import polygons.RotatingShapes;
 import polygons.StarOfDavid;
 import processing.core.PApplet;
 import squares.BorderedSquare;
+import stripes.BaseStripes;
+import stripes.WobbleStripes;
 
 import java.util.ArrayList;
 
@@ -37,23 +39,44 @@ public class MainController extends PApplet {
     }
 
     public void setup() {
-        // drawings.add(new StarOfDavid(this));
+
+        // current work
+        drawings.add(new WobbleStripes(this));
+
+
+        // circles
+        drawings.add(new FloweringCircles(this));
+        drawings.add(new Targets(this));
+        drawings.add(new Tentacles(this));
+
+        // curves
+        drawings.add(new BezierDemo(this));
+
+        // grid
         drawings.add(new CircleGrid(this));
-        drawings.add(new TriangleGrid(this));
         drawings.add(new GravityGrid(this, new TriangleGrid(this)));
         drawings.add(new GravityGrid(this, new SquareGrid(this)));
-
-        // drawings.add(new BezierDemo(this));
-        drawings.add(new Targets(this));
-        drawings.add(new KaleidoscopeGenerator(this));
+        drawings.add(new HexagonGrid(this));
+        drawings.add(new SquareGrid(this));
+        drawings.add(new TriangleGrid(this));
         drawings.add(new VortexGrid(this));
-        drawings.add(new FloweringCircles(this));
-        drawings.add(new Tentacles(this));
-        drawings.add(new BorderedSquare(this));
+
+        // kaleidoscope
+        drawings.add(new KaleidoscopeGenerator(this));
+
+        // polygons
         drawings.add(new RotatingShapes(this));
+        drawings.add(new StarOfDavid(this));
+
+        // stripes
+        drawings.add(new BaseStripes(this));
+        drawings.add(new WobbleStripes(this));
+
+        // squares
+        drawings.add(new BorderedSquare(this));
+
 
         drawings.get(0).setup();
-
         // noLoop();
     }
 
