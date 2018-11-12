@@ -14,6 +14,29 @@ public class PAppletController extends PApplet {
         height = pApplet.height;
         cross = (float) Math.sqrt(width*width+height*height);
     }
+
+    public class Timer {
+
+        int interval;
+        int lastTrigger = 0;
+
+        public Timer(int interval) {
+            this.interval = interval;
+        }
+
+        public boolean trigger() {
+
+            int cur = millis();
+
+            if(cur - lastTrigger >= interval) {
+                lastTrigger = cur;
+                return true;
+            }
+
+            return false;
+        }
+    }
+
     // =================================================================================================================
     // controls
     // =================================================================================================================
@@ -88,12 +111,18 @@ public class PAppletController extends PApplet {
     public void stroke(int c) {
         pApplet.stroke(c);
     }
+    public void stroke(float c) {
+        pApplet.stroke(c);
+    }
 
     public void noStroke() {
         pApplet.noStroke();
     }
 
     public void stroke(int r, int g, int b) {
+        pApplet.stroke(r, g, b);
+    }
+    public void stroke(float r, float g, float b) {
         pApplet.stroke(r, g, b);
     }
 

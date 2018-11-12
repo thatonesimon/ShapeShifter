@@ -31,18 +31,22 @@ public class GridOfSquares extends SquareGrid {
         ripples.add(p);
     }
 
-    public float grow[][];
-    public ArrayList<PVector> ripples = new ArrayList<>();
+    Timer t = new Timer(1000);
+    int maxGrow = 20;
+    float grow[][];
+    ArrayList<PVector> ripples = new ArrayList<>();
 
     public void draw() {
-        colorMode(HSB);
         background(Colors.BLACK);
+        autoRipple();
         ripple();
         // rippleFromCenter();
+        colorMode(HSB);
         for(int i = 0; i < numX; i++) {
             for (int j = 0; j < numY; j++) {
                 PVector p = points[i][j];
 
+                stroke(map(grow[i][j], 0, 20, 0, 240), 255, 255);
                 rect(p.x, p.y, 10+grow[i][j], 10+grow[i][j]);
             }
         }
@@ -61,14 +65,20 @@ public class GridOfSquares extends SquareGrid {
                     PVector p = points[i][j];
                     PVector rippleCenter = new PVector(r.x, r.y);
                     if(rippleCenter.dist(p) > r.z && rippleCenter.dist(p) < r.z+thick) {
-                        grow[i][j] = 20;
+                        grow[i][j] = maxGrow;
                     }
 
                 }
             }
             r.z++;
         }
+    }
 
+    void autoRipple() {
+        if(t.trigger()) {
+            PVector p = new PVector(random(width), random(height), 0);
+            ripples.add(p);
+        }
     }
 
     ArrayList<Integer> centerRipples = new ArrayList<>();
@@ -81,7 +91,7 @@ public class GridOfSquares extends SquareGrid {
                 PVector p = points[i][j];
                 // 10 is thickness of ring
                 if(center.dist(p) < r && center.dist(p) > r-10) {
-                    grow[i][j] = 20;
+                    grow[i][j] = maxGrow;
                 }
 
             }
