@@ -19,6 +19,7 @@ public class BaseStripes extends PAppletController implements Drawing {
     }
 
     public void setup() {
+        noStroke();
 
     }
 

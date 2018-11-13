@@ -40,9 +40,12 @@ public class MainController extends PApplet {
 
     public void setup() {
 
+        // blendMode(ADD);
+
         // current work
+        drawings.add(new CircleGrid(this));
         // drawings.add(new WobbleStripes(this));
-        drawings.add(new GridOfSquares(this));
+        // drawings.add(new GridOfSquares(this));
 
         // circles
         drawings.add(new FloweringCircles(this));
@@ -56,7 +59,8 @@ public class MainController extends PApplet {
         drawings.add(new CircleGrid(this));
         drawings.add(new GravityGrid(this, new TriangleGrid(this)));
         drawings.add(new GravityGrid(this, new SquareGrid(this)));
-        drawings.add(new HexagonGrid(this));
+        drawings.add(new GridOfSquares(this));
+        // drawings.add(new HexagonGrid(this));
         drawings.add(new SquareGrid(this));
         drawings.add(new TriangleGrid(this));
         drawings.add(new VortexGrid(this));

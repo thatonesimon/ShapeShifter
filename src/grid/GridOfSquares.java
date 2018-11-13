@@ -31,13 +31,13 @@ public class GridOfSquares extends SquareGrid {
     }
 
     Timer t = new Timer(2000);
-    int maxGrow = 20;
+    int maxGrow = 15;
     float grow[][];
     ArrayList<PVector> ripples = new ArrayList<>();
 
     public void draw() {
         background(Colors.BLACK);
-        autoRipple();
+        centerRipple();
         ripple();
         // rippleFromCenter();
         colorMode(HSB);
@@ -45,7 +45,7 @@ public class GridOfSquares extends SquareGrid {
             for (int j = 0; j < numY; j++) {
                 PVector p = points[i][j];
 
-                stroke(map(grow[i][j], 0, 20, 0, 240), 255, 255);
+                stroke(map(grow[i][j], 0, maxGrow, 0, 255), 255, 255);
                 rect(p.x, p.y, 10+grow[i][j], 10+grow[i][j]);
             }
         }
@@ -71,7 +71,7 @@ public class GridOfSquares extends SquareGrid {
             }
             r.z++;
         }
-        ripples.removeIf(r -> r.z > cross/2.0f);
+        ripples.removeIf(r -> r.z > cross/4.0f);
     }
 
     void autoRipple() {
@@ -81,11 +81,18 @@ public class GridOfSquares extends SquareGrid {
         }
     }
 
+    void centerRipple() {
+        if(t.trigger()) {
+            PVector p = new PVector(width/2.0f, height/2.0f, 0);
+            ripples.add(p);
+        }
+    }
+
     public void shrink() {
         for(int i = 0; i < points.length; i++) {
             for(int j = 0; j < points[0].length; j++) {
                 if(grow[i][j] > 0.1) {
-                    grow[i][j]*=0.75;
+                    grow[i][j]-=0.5;
                 }
             }
         }

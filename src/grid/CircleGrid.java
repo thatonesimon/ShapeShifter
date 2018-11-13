@@ -26,8 +26,9 @@ public class CircleGrid extends SquareGrid {
             for (int j = 0; j < numY; j++) {
                 PVector p = points[i][j];
                 // TODO: make this radiate from center
-                float x = squareSide/2.0f*cos(rotateT+10*i);
-                float y = squareSide/2.0f*sin(rotateT+10*j);
+                float dist = p.dist(new PVector(width/2f, height/2f));
+                float x = squareSide/2.0f*cos(rotateT+dist);
+                float y = squareSide/2.0f*sin(rotateT+dist);
                 ellipse(p.x+x, p.y+y, 10, 10);
             }
         }
