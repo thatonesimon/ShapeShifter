@@ -24,7 +24,7 @@ public class BaseStripes extends PAppletController implements Drawing {
     }
 
     // you will see numPoints-1 stripes
-    public int numPoints = 30;
+    public int numPoints = 31;
     public PVector[][] points = new PVector[numPoints][numPoints];
     public float pointSpace;
     public int[] colors;
@@ -35,15 +35,15 @@ public class BaseStripes extends PAppletController implements Drawing {
         background(Colors.BLACK);
 
         if(horizontal) {
-            drawHorizontal();
+            horizontalStripes();
         } else {
-            drawVertical();
+            verticalStripes();
         }
 
         popMatrix();
     }
 
-    void drawVertical() {
+    void verticalStripes() {
         for(int x = 0; x < numPoints-1; x++) {
 
             fill(colors[x%2]);
@@ -59,7 +59,7 @@ public class BaseStripes extends PAppletController implements Drawing {
         }
     }
 
-    void drawHorizontal() {
+    void horizontalStripes() {
         for(int y = 0; y < numPoints-1; y++) {
 
             fill(colors[y%2]);

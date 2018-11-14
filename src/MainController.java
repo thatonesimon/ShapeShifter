@@ -42,9 +42,12 @@ public class MainController extends PApplet {
 
         // blendMode(ADD);
 
+        drawings.add(new Sandbox(this));
+
         // current work
+        drawings.add(new VortexGrid(this));
         drawings.add(new CircleGrid(this));
-        // drawings.add(new WobbleStripes(this));
+        drawings.add(new WobbleStripes(this));
         // drawings.add(new GridOfSquares(this));
 
         // circles
