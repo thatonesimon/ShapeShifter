@@ -1,4 +1,5 @@
 
+import circles.CircuitSnake;
 import circles.FloweringCircles;
 import circles.Targets;
 import circles.Tentacles;
@@ -39,13 +40,16 @@ public class MainController extends PApplet {
     }
 
     public void setup() {
+        // frameRate(2);
 
         // blendMode(ADD);
 
-        drawings.add(new Sandbox(this));
+        drawings.add(new CircuitSnake(this));
+        drawings.add(new Diffusion(this));
 
         // current work
-        drawings.add(new VortexGrid(this));
+        drawings.add(new VortexGrid(this, new SquareGrid(this)));
+        drawings.add(new VortexGrid(this, new TriangleGrid(this)));
         drawings.add(new CircleGrid(this));
         drawings.add(new WobbleStripes(this));
         // drawings.add(new GridOfSquares(this));
@@ -66,7 +70,7 @@ public class MainController extends PApplet {
         // drawings.add(new HexagonGrid(this));
         drawings.add(new SquareGrid(this));
         drawings.add(new TriangleGrid(this));
-        drawings.add(new VortexGrid(this));
+        drawings.add(new VortexGrid(this, new SquareGrid(this)));
 
         // kaleidoscope
         drawings.add(new KaleidoscopeGenerator(this));

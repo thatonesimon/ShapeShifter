@@ -9,11 +9,12 @@ public class TriangleGrid extends BaseGrid {
     public TriangleGrid(PApplet pApplet) {
         super(pApplet);
 
-        numY = 30;
+        // numY = 30;
         triSide = (float) height/numY;
         triHeight = (float) Math.sqrt((triSide*triSide)-((triSide/2.0f)*(triSide/2.0f)));
         numX = (int) (Math.floor(width/triHeight)+1);
         points = new PVector[numX][numY+2];
+        setupPoints();
     }
 
     public void setup() {
@@ -26,15 +27,33 @@ public class TriangleGrid extends BaseGrid {
     float triHeight;
 
     public void draw() {
-        background(0);
+        background(Colors.BLACK);
         // wobbleGrid();
+        drawPoints();
+        drawTri();
+    }
+
+    // TODO: setup with i, j and not x, y
+    // TODO: how to make up and down triangles
+    public void setupPoints() {
+
+        int col = 0;
+        for(float x = 0; x < width; x+=triHeight) {
+            int row = 0;
+            for(float y = col%2==0 ? triSide/2.0f : 0; y < height+triSide/2.0f; y+=triSide) {
+                points[col][row] = new PVector(x, y);
+                row++;
+            }
+            col++;
+        }
+    }
+
+    void drawTri() {
         for(int i = 0; i < numX-1; i++) {
             for(int j = 0; j < numY + 2; j++) {
-
                 try {
-
                     if(i%2 == 0) {
-                    // if(i%2 == 1) {
+                        // if(i%2 == 1) {
                         fill(Colors.BLACK);
                         beginShape();
                         //    3c
@@ -82,21 +101,6 @@ public class TriangleGrid extends BaseGrid {
                     // println("issue with " + i + ", " + j);
                 }
             }
-        }
-    }
-
-    // TODO: setup with i, j and not x, y
-    // TODO: how to make up and down triangles
-    public void setupPoints() {
-
-        int col = 0;
-        for(float x = 0; x < width; x+=triHeight) {
-            int row = 0;
-            for(float y = col%2==0 ? triSide/2.0f : 0; y < height+triSide/2.0f; y+=triSide) {
-                points[col][row] = new PVector(x, y);
-                row++;
-            }
-            col++;
         }
     }
 

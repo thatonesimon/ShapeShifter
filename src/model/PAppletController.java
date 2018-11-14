@@ -103,6 +103,10 @@ public class PAppletController extends PApplet {
     public void fill(float r, float g, float b) {
         pApplet.fill(r, g, b);
     }
+    public void fill(float r, float g, float b, float a) {
+        pApplet.fill(r, g, b, a);
+    }
+
 
     public void noFill() {
         pApplet.noFill();
@@ -128,6 +132,18 @@ public class PAppletController extends PApplet {
 
     public void strokeWeight(float w) {
         pApplet.strokeWeight(w);
+    }
+
+    public void loadPixels() {
+        pApplet.loadPixels();
+    }
+
+    public void updatePixels() {
+        pApplet.updatePixels();
+    }
+
+    public int[] pixels() {
+        return pApplet.pixels;
     }
 
     // =================================================================================================================
@@ -197,6 +213,6 @@ public class PAppletController extends PApplet {
     // =================================================================================================================
 
     public void center() {
-        pApplet.translate(width/2, height/2);
+        pApplet.translate(width/2.0f, height/2.0f);
     }
 }

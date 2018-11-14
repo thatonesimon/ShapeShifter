@@ -1,5 +1,6 @@
 package grid;
 
+import color.Colors;
 import model.Drawing;
 import model.PAppletController;
 import processing.core.PApplet;
@@ -11,6 +12,7 @@ public abstract class BaseGrid extends PAppletController implements Drawing {
         super(pApplet);
     }
 
+    // default 30
     public int numX = 30;
     public int numY = 30;
     public PVector[][] points = new PVector[numX][numY];
@@ -38,6 +40,7 @@ public abstract class BaseGrid extends PAppletController implements Drawing {
     }
 
     public void drawPoints() {
+        stroke(Colors.WHITE);
         for(int i = 0; i < numX; i++) {
             for(int j = 0; j < numY+1; j++) {
                 if(points[i][j] != null) {
