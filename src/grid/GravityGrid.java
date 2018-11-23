@@ -20,6 +20,7 @@ public class GravityGrid extends PAppletController implements Drawing {
 
     public void setup() {
         grid.setup();
+        noStroke();
     }
 
     public void mousePressed() {

@@ -68,6 +68,9 @@ public class PAppletController extends PApplet {
     public void colorMode(int m) {
         pApplet.colorMode(m);
     }
+    public void colorMode(int m, float i) {
+        pApplet.colorMode(m, i);
+    }
 
     public void rectMode(int m) {
         pApplet.rectMode(m);

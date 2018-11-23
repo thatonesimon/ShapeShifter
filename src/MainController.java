@@ -24,8 +24,8 @@ public class MainController extends PApplet {
     ArrayList<Drawing> drawings = new ArrayList<>();
 
     public void settings() {
-       size(800, 800);
-       // fullScreen(JAVA2D);
+       size(1000, 1000);
+       // fullScreen(P2D);
     }
 
     public void draw() {
@@ -41,8 +41,11 @@ public class MainController extends PApplet {
 
     public void setup() {
         // frameRate(2);
+        drawings.add(new TriangleGrid(this));
 
         // blendMode(ADD);
+        drawings.add(new OilSpill(this));
+        drawings.add(new GridOfSquares(this));
 
         drawings.add(new CircuitSnake(this));
         drawings.add(new Diffusion(this));

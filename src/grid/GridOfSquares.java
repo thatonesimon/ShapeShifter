@@ -40,7 +40,7 @@ public class GridOfSquares extends SquareGrid {
         centerRipple();
         ripple();
         // rippleFromCenter();
-        colorMode(HSB);
+        colorMode(HSB, 255);
         for(int i = 0; i < numX; i++) {
             for (int j = 0; j < numY; j++) {
                 PVector p = points[i][j];
@@ -71,7 +71,7 @@ public class GridOfSquares extends SquareGrid {
             }
             r.z++;
         }
-        ripples.removeIf(r -> r.z > cross/4.0f);
+        ripples.removeIf(r -> r.z > cross/2.0f);
     }
 
     void autoRipple() {
@@ -98,3 +98,4 @@ public class GridOfSquares extends SquareGrid {
         }
     }
 }
+
