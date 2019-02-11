@@ -40,7 +40,7 @@ public class RotatingShapes extends PAppletController implements Drawing {
         super(pApplet);
 
         colors[0] = Colors.BLACK;
-        colors[1] = Colors.RED;
+        colors[1] = Colors.WHITE;
     }
 
     public void draw() {

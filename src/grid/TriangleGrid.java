@@ -28,7 +28,7 @@ public class TriangleGrid extends BaseGrid {
 
     public void draw() {
         background(Colors.BLACK);
-        wobbleGrid();
+        // wobbleGrid();
         // drawPoints();
         drawTri();
     }

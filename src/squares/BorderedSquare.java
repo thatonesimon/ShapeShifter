@@ -29,7 +29,7 @@ public class BorderedSquare extends PAppletController implements Drawing {
 
         this.outSize = size;
         this.inSize = dif*outSize;
-        this.strokeW = size/50;
+        this.strokeW = size/50+25;
 
         float in = inSize/2;
         float out = outSize/2;
@@ -58,13 +58,13 @@ public class BorderedSquare extends PAppletController implements Drawing {
     }
 
     float strokeW;
-    float dif = (float) 0.75;
+    float dif = (float) 0.45;
     float outSize;
     float inSize;
-    int numArms = 10;
+    int numArms = 3;
     ArrayList<Arm> arms = new ArrayList<>(numArms);
 
-    int numLayers = 13;
+    int numLayers = 3;
 
     int dir = 4;
 
@@ -123,6 +123,7 @@ public class BorderedSquare extends PAppletController implements Drawing {
                     x1+=dir;
                 }
                 x2+=dir;
+            } else {
             }
 
             check();
@@ -173,13 +174,16 @@ public class BorderedSquare extends PAppletController implements Drawing {
             strokeWeight(strokeW);
             drawWithLine();
             scale(-dif, dif);
-            rotate(radians((float)millis()/100*(i+1)/10));
+            // rotate(radians((float)millis()/100*(i+1)/10));
+            rotate(rotateT);
         }
         for(Arm a : arms) {
-            a.next();
+            // a.next();
         }
-        if((float)millis()/100 == 900) {
-            noLoop();
+        if(rotateT >= radians(45)) {
+
+            // noLoop();
+
         }
     }
 

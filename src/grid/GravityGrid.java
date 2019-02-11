@@ -34,7 +34,7 @@ public class GravityGrid extends PAppletController implements Drawing {
 
     public void draw() {
         grid.draw();
-        suckRectangle();
+        suckCircle();
     }
 
     private void mockCenter() {
@@ -50,7 +50,7 @@ public class GravityGrid extends PAppletController implements Drawing {
         }
     }
 
-    float noEffectRad = 100;
+    float noEffectRad = 150;
     private void suckCircle() {
         for (PVector g : gravity) {
             for (int i = 0; i < grid.numX; i++) {

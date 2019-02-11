@@ -10,6 +10,7 @@ public class SquareGrid extends BaseGrid {
         super(pApplet);
         squareSide = max((float) width/(numX-1), (float) height/(numY-1));
         setupPoints();
+        // setupPointsWithBuffer();
     }
 
     public void setup() {
@@ -30,11 +31,14 @@ public class SquareGrid extends BaseGrid {
 
         background(0);
 
+        stroke(Colors.WHITE);
+        strokeWeight(5);
+
         for(int i = 0; i < (numX-1)*(numY-1); i++) {
             if(i%2 == 0) {
                 fill(Colors.BLACK);
             } else {
-                fill(Colors.RED);
+                fill(Colors.WHITE);
             }
 
             // index of top left corner
@@ -59,6 +63,21 @@ public class SquareGrid extends BaseGrid {
                 // float y = j*((float) height)/(numY-1);
                 float x = i*squareSide;
                 float y = j*squareSide;
+                points[i][j] = new PVector(x, y);
+            }
+        }
+    }
+
+    public void setupPointsWithBuffer() {
+        int padding = 100;
+        float paddedSquareSide = squareSide + padding/numX;
+
+        for(int i = 0; i < numX; i++) {
+            for(int j = 0; j < numY; j++) {
+                // float x = i*((float) width)/(numX-1);
+                // float y = j*((float) height)/(numY-1);
+                float x = i*paddedSquareSide-padding;
+                float y = j*paddedSquareSide-padding;
                 points[i][j] = new PVector(x, y);
             }
         }

@@ -1,9 +1,9 @@
 
-import circles.CircuitSnake;
-import circles.FloweringCircles;
-import circles.Targets;
-import circles.Tentacles;
+import circles.*;
+import color.ColorWalk;
+import color.Colors;
 import curves.BezierDemo;
+import curves.Spiral;
 import grid.*;
 import kaleidoscope.KaleidoscopeGenerator;
 import model.Drawing;
@@ -15,7 +15,10 @@ import squares.BorderedSquare;
 import stripes.BaseStripes;
 import stripes.WobbleStripes;
 
+import java.awt.*;
 import java.util.ArrayList;
+
+import static model.PAppletController.cross;
 
 public class MainController extends PApplet {
 
@@ -23,15 +26,20 @@ public class MainController extends PApplet {
 
     ArrayList<Drawing> drawings = new ArrayList<>();
 
+    int w = 1000;
+    int h = 1000;
+
     public void settings() {
-       size(1000, 1000);
-       // fullScreen(P2D);
+        size(w, h);
+        // fullScreen(P2D);
     }
 
     public void draw() {
         PAppletController.rotateT = radians(millis()/30.0f);
         try {
             drawings.get(curDrawing%drawings.size()).draw();
+            // circleFrame();
+            // smiley();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,23 +47,60 @@ public class MainController extends PApplet {
         }
     }
 
+    public void circleFrame() {
+        resetMatrix();
+        int thickness = w/20;
+        int numLayers = 1;
+        noFill();
+        stroke(Colors.WHITE);
+        translate(w/2, h/2);
+        strokeWeight(thickness+220);
+        for(int i = 1; i < numLayers+1; i++) {
+            // strokeWeight(i*thickness/numLayers);
+            ellipse(0, 0, cross-200, cross-200);
+        }
+        // ellipse(0, 0, thickness/numLayers, thickness/numLayers);
+        strokeWeight(2);
+        stroke(Colors.BLACK);
+        ellipse(0, 0, width, width);
+        noStroke();
+    }
+
+    public void smiley() {
+        background(Colors.WHITE);
+        int s = 2*min(width, height)/3;
+        int thick = s/20;
+        stroke(Colors.BLACK);
+        strokeWeight(thick);
+        noFill();
+        pushMatrix();
+        translate(w/2, h/2);
+
+        ellipse(0, 0, s, s);
+
+        // eyes
+        ellipse(-s/3, -s/6, thick, thick);
+        ellipse(s/3, -s/6, thick, thick);
+
+        // mouth
+        float ratio = 3/4f;
+        arc(0, 0, s*ratio, s*ratio, 0, PI);
+
+        popMatrix();
+    }
+
     public void setup() {
         // frameRate(2);
-        drawings.add(new TriangleGrid(this));
 
         // blendMode(ADD);
-        drawings.add(new OilSpill(this));
-        drawings.add(new GridOfSquares(this));
 
-        drawings.add(new CircuitSnake(this));
-        drawings.add(new Diffusion(this));
+        // drawings.add(new CircuitSnake(this));
+        // drawings.add(new Diffusion(this));
 
         // current work
-        drawings.add(new VortexGrid(this, new SquareGrid(this)));
-        drawings.add(new VortexGrid(this, new TriangleGrid(this)));
-        drawings.add(new CircleGrid(this));
-        drawings.add(new WobbleStripes(this));
-        // drawings.add(new GridOfSquares(this));
+        // drawings.add(new Smiley(this));
+
+        drawings.add(new Spiral(this));
 
         // circles
         drawings.add(new FloweringCircles(this));
@@ -94,10 +139,20 @@ public class MainController extends PApplet {
         // noLoop();
     }
 
+    private boolean running = true;
     public void keyPressed() {
         if(key == ' ') {
             curDrawing++;
             drawings.get(curDrawing%drawings.size()).setup();
+        } else if(key == 'p') {
+            running = !running;
+            if(running) {
+                loop();
+            } else {
+                noLoop();
+            }
+        } else if(key == 's') {
+            saveFrame("/Users/swong/Desktop/shmoove######.jpg");
         }
         Drawing drawing = drawings.get(curDrawing%drawings.size());
         drawing.keyPressed();

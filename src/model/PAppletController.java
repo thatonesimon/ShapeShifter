@@ -1,18 +1,22 @@
 package model;
 
 import processing.core.PApplet;
+import processing.core.PVector;
 
 public class PAppletController extends PApplet {
 
-    public PApplet pApplet;
+    public static PApplet pApplet;
     public static float rotateT = 0;
-    public float cross = 0;
+    public static float cross = 0;
+    public static PVector center;
 
     public PAppletController(PApplet pApplet) {
         this.pApplet = pApplet;
         width = pApplet.width;
         height = pApplet.height;
         cross = (float) Math.sqrt(width*width+height*height);
+        center = new PVector(width/2.0f, height/2.0f);
+
     }
 
     public class Timer {
@@ -160,9 +164,55 @@ public class PAppletController extends PApplet {
     public void ellipse(float x, float y, float w, float h) {
         pApplet.ellipse(x, y, w, h);
     }
+    public void circle(float x, float y, float d) {
+        pApplet.ellipse(x, y, d, d);
+    }
+
+    public void arc(float a, float b, float c, float d, float start, float stop) {
+        pApplet.arc(a, b, c, d, start, stop);
+    }
 
     public void rect(float x, float y, float w, float h) {
         pApplet.rect(x, y, w, h);
+    }
+    public void square(float x, float y, float side) {
+        pApplet.rect(x, y, side, side);
+
+    }
+
+    public void poly(float x, float y, int sides, float size) {
+        pushMatrix();
+        beginShape();
+        // for(float i = -90.0f; i < 360.0f-90.0f; i+=360.0f/sides) {
+
+        for(float i = 0; i < 360; i+=360.0f/sides) {
+            float vertexX = size*cos(radians(i));
+            float vertexY = size*sin(radians(i));
+            vertex(vertexX+x, vertexY+y);
+        }
+        endShape(CLOSE);
+        popMatrix();
+    }
+
+    public void star(float x, float y, int sides, float size) {
+        pushMatrix();
+        beginShape();
+
+        float inSize = size*3/4.0f;
+        float outSize = size*5/4.0f;
+        float angleOffset = 360/sides/2.0f;
+
+        for(float i = 0; i < 360; i+=360.0f/sides) {
+            float vertexX = inSize*cos(radians(i));
+            float vertexY = inSize*sin(radians(i));
+            vertex(vertexX+x, vertexY+y);
+
+            vertexX = outSize*cos(radians(i+angleOffset));
+            vertexY = outSize*sin(radians(i+angleOffset));
+            vertex(vertexX+x, vertexY+y);
+        }
+        endShape(CLOSE);
+        popMatrix();
     }
 
     public void beginShape() {
